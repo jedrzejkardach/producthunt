@@ -46,16 +46,21 @@
 </head>
 <body>
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="">JJ</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav ml-auto">
-        <a class="nav-link" href="">Twitter</a>
-        <a class="nav-link" href="">Resume</a>
-        <a class="nav-link" href="">Blog</a>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="">
+        <img src="{% static 'ph_logo.png' %}" class="d-inline-block align-top" height="30" width="30"/>
+        Product Hunt
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-link" href="">Sign Up</a>
+          <a class="nav-link" href="">Log in</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -63,8 +68,8 @@
 
 <main role="main">
 
-{% block content %}
-{% endblock %}
+  {% block content %}
+  {% endblock %}
 
 </main>
 
