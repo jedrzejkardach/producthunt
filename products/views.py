@@ -2,5 +2,5 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, 'products/home.html')
 
+    return render(request=request, template_name='products/home.html')
