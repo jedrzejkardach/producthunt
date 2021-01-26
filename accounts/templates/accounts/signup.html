@@ -9,6 +9,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% if error %}
+{{ error }}
+<br/>
+<br/>
+{% endif %}
+
 <h1>Sign up!</h1>
 <form method="POST" actions="{% url 'signup' %}">
     {% csrf_token %}
