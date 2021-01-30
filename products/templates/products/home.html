@@ -2,16 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Product Hunt</title>
 </head>
 <body>
 {% extends 'base.html' %}
 
 {% block content %}
 
-Home!
+{% for product in products.all %}
+
+<div class="row pt-3">
+    <div class="col-3" style="cursor: pointer;" onclick="window.location='{% url 'detail' product.id %}';">
+        <img src="{{ product.image.url }}" class="img-fluid"/>
+    </div>
+    <div class="col-5" style="cursor: pointer;" onclick="window.location='{% url 'detail' product.id %}';">
+        <div class="row">
+            <a href="{% url 'detail' product.id %}"><h1>{{ product.title }}</h1></a>
+        </div>
+        <div class="row">
+            <p>{{ product.summary }}</p>
+        </div>
+    </div>
+    <div class="col-3">
+        {% if user_id in product.upvoted_by %}
+        <h6 id="demo">You can only vote once</h6>
+        <a><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Upvote {{product.votes_total}}</button></a>
+        {% else %}
+        <a href="javascript:{document.getElementById('upvote{{product.id}}').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Upvote {{product.votes_total}}</button></a>
+        {% endif %}
+    </div>
+</div>
+<form method="post" action="{% url 'upvote' product.id %}" id="upvote{{product.id}}">
+    {% csrf_token %}
+    <input type="hidden">
+</form>
+
+{% endfor %}
+
+<br/>
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 {% endblock %}
 
 </body>
 </html>
+<script type="text/javascript">
+function foo() {
+    document.getElementById("demo").innerHTML = "AAA";
+    console.log("BBB");
+</script>

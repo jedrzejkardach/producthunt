@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
+
 
 class Product(models.Model):
 
@@ -11,6 +13,7 @@ class Product(models.Model):
     icon = models.ImageField(upload_to="images/")
     body = models.TextField()
     hunter = models.ForeignKey(User, on_delete=models.CASCADE)
+    upvoted_by = ArrayField(base_field=models.IntegerField(), default=list)
     # title
     # url
     # pub_date
